@@ -81,8 +81,11 @@ public class MakerService {
         for (int i = 0; i < booksList.size(); i++) {
             Book book = booksList.get(i);
 
-            text += i + 1 + ")" + " <b>" + book.getName() + "</b>--" + book.getAuthor() + " <b><i>" + book.getType().toUpperCase() + "</i></b>\n";
-
+            if (book.getType().equals("mp3") || book.getType().equals("audio")) {
+                text += i + 1 + ") \uD83D\uDCD5 " + " <b>" + book.getName() + "</b>" + (book.getAuthor() != null ? "--" + book.getAuthor() : "") + "\n";
+            } else {
+                text += i + 1 + ") \uD83D\uDCD5 " + " <b>" + book.getName() + "</b>" + (book.getAuthor() != null ? "--" + book.getAuthor() : "") + "\n";
+            }
         }
         editMessageText.setText(text);
 
