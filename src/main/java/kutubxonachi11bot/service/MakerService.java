@@ -40,7 +40,7 @@ public class MakerService {
             Book book = booksList.get(i);
 
             if (book.getType().equals("mp3") || book.getType().equals("audio")) {
-                text += i + 1 + ") \uD83D\uDCD5 " + " <b>" + book.getName() + "</b>" + (book.getAuthor() != null ? "--" + book.getAuthor() : "") + "\n";
+                text += i + 1 + ") \uD83C\uDFA7 " + " <b>" + book.getName() + "</b>" + (book.getAuthor() != null ? "--" + book.getAuthor() : "") + "\n";
             } else {
                 text += i + 1 + ") \uD83D\uDCD5 " + " <b>" + book.getName() + "</b>" + (book.getAuthor() != null ? "--" + book.getAuthor() : "") + "\n";
             }
@@ -82,7 +82,7 @@ public class MakerService {
             Book book = booksList.get(i);
 
             if (book.getType().equals("mp3") || book.getType().equals("audio")) {
-                text += i + 1 + ") \uD83D\uDCD5 " + " <b>" + book.getName() + "</b>" + (book.getAuthor() != null ? "--" + book.getAuthor() : "") + "\n";
+                text += i + 1 + ") \uD83C\uDFA7 " + " <b>" + book.getName() + "</b>" + (book.getAuthor() != null ? "--" + book.getAuthor() : "") + "\n";
             } else {
                 text += i + 1 + ") \uD83D\uDCD5 " + " <b>" + book.getName() + "</b>" + (book.getAuthor() != null ? "--" + book.getAuthor() : "") + "\n";
             }
