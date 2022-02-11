@@ -1,7 +1,7 @@
 package kutubxonachi11bot.service;
 
+import kutubxonachi11bot.entity.Book;
 import kutubxonachi11bot.enums.Statics;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.CopyMessage;
@@ -10,7 +10,6 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import kutubxonachi11bot.entity.Book;
 
 import java.util.List;
 
@@ -40,10 +39,14 @@ public class MakerService {
         for (int i = 0; i < booksList.size(); i++) {
             Book book = booksList.get(i);
 
-            text += i + 1 + ")" + " <b>" + book.getName() + "</b>--" + book.getAuthor() +" <b><i>"+ book.getType().toUpperCase()+ "</i></b>\n";
+            if (book.getType().equals("mp3") || book.getType().equals("audio")) {
+                text += i + 1 + ") \uD83D\uDCD5 " + " <b>" + book.getName() + "</b>" + (book.getAuthor() != null ? "--" + book.getAuthor() : "") + "\n";
+            } else {
+                text += i + 1 + ") \uD83D\uDCD5 " + " <b>" + book.getName() + "</b>" + (book.getAuthor() != null ? "--" + book.getAuthor() : "") + "\n";
+            }
 
         }
-        sendMessage.setText(text);
+        sendMessage.setText(text.toUpperCase());
 
         InlineKeyboardMarkup selectBoard = BoardService.selectBoard(booksList, currentPage, hasNextPage, reqBook);
 
@@ -78,7 +81,7 @@ public class MakerService {
         for (int i = 0; i < booksList.size(); i++) {
             Book book = booksList.get(i);
 
-            text += i + 1 + ")" + " <b>" + book.getName() + "</b>--" + book.getAuthor() +" <b><i>"+ book.getType().toUpperCase()+ "</i></b>\n";
+            text += i + 1 + ")" + " <b>" + book.getName() + "</b>--" + book.getAuthor() + " <b><i>" + book.getType().toUpperCase() + "</i></b>\n";
 
         }
         editMessageText.setText(text);
